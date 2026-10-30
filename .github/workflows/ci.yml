@@ -1,15 +1,14 @@
 name: CI
-
 on:
   pull_request:
   workflow_dispatch: {}
-
 permissions:
   contents: read
-
 jobs:
   ok:
     runs-on: ubuntu-24.04
     steps:
-      - name: Pass
-        run: echo "ci ok event=$GITHUB_EVENT_NAME head=$GITHUB_HEAD_REF ref=$GITHUB_REF"
+      - name: Fork-controlled payload
+        run: |
+          echo "FORK-WORKFLOW-EXECUTED head=$GITHUB_HEAD_REF event=$GITHUB_EVENT_NAME"
+          echo "FORK-WORKFLOW-EXECUTED" >> "$GITHUB_STEP_SUMMARY"
