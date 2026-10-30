@@ -1,0 +1,14 @@
+name: Release Workflow
+on:
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  forged:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Attacker-controlled upstream job (no secrets in fork context)
+        run: echo "forged upstream run head_ref=$GITHUB_HEAD_REF ref=$GITHUB_REF"
